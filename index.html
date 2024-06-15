@@ -99,7 +99,7 @@
             color: #000000;
         }
 
-        .color-picker-toggle {
+        .color-picker {
             display: inline-block;
             width: 60px;
             height: 60px;
@@ -109,27 +109,28 @@
             background-position: center;
             cursor: pointer;
             position: absolute;
-            top: calc(50% - 30px); /* Center vertically */
-            left: 10px; /* Adjust as needed */
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .color-picker-toggle:hover {
-            transform: scale(1.1); /* Scale up on hover */
-        }
-
-        .color-picker {
-            display: none;
-            position: absolute;
-            top: calc(50% - 30px); /* Center vertically */
-            left: 80px; /* Adjust as needed */
+            right: 10px;
+            bottom: 10px;
         }
 
         .color-picker input[type="color"] {
+            position: absolute;
             opacity: 0;
             width: 100%;
             height: 100%;
             cursor: pointer;
+        }
+
+        .toggle-picker-button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
         }
 
         @media (min-width: 600px) {
@@ -149,9 +150,9 @@
 </head>
 <body>
     <div class="header">
-        <div class="color-picker-toggle" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
         <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
-        <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
+        <div class="toggle-picker-button" id="toggle-picker-button" onclick="toggleColorPicker()">カラーピッカー表示</div> <!-- Toggle color picker button -->
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger menu icon -->
     </div>
 
     <div class="menu" id="menu">
@@ -176,26 +177,24 @@
     </div>
 
     <script>
-        // 文字色を変更する関数
-        document.getElementById('color-picker').addEventListener('input', function() {
-            document.getElementById('title').style.color = this.value;
-            document.getElementById('date').style.color = this.value;
-            document.getElementById('content').style.color = this.value;
-        });
-
         // カラーピッカーの表示・非表示を切り替える関数
         function toggleColorPicker() {
-            const colorPicker = document.getElementById('color-picker-container');
-            if (colorPicker.style.display === 'none' || colorPicker.style.display === '') {
-                colorPicker.style.display = 'block';
+            const colorPickerContainer = document.getElementById('color-picker-container');
+            const toggleButton = document.getElementById('toggle-picker-button');
+
+            if (colorPickerContainer.style.display === 'none' || colorPickerContainer.style.display === '') {
+                colorPickerContainer.style.display = 'block';
+                toggleButton.textContent = 'カラーピッカー非表示';
             } else {
-                colorPicker.style.display = 'none';
+                colorPickerContainer.style.display = 'none';
+                toggleButton.textContent = 'カラーピッカー表示';
             }
         }
 
-        // メニューを開く関数
-        function openMenu() {
-            document.getElementById('menu').style.width = '250px';
+        // メニューを開く・閉じる関数
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.width = menu.style.width === '250px' ? '0' : '250px';
         }
 
         // メニューを閉じる関数
@@ -205,4 +204,3 @@
     </script>
 </body>
 </html>
-
