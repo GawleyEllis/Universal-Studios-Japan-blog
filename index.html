@@ -115,19 +115,20 @@
         .product-info {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start; /* Align items to the top */
             margin-top: 20px;
         }
 
         .product-info img {
             width: 40%; /* Adjust image width as needed */
+            max-width: 300px; /* Limit maximum image width */
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
         }
 
         .product-info .text {
-            width: 55%; /* Adjust text width as needed */
-            padding: 0 20px;
+            flex: 1; /* Take remaining space */
         }
 
         @media (max-width: 600px) {
@@ -138,10 +139,7 @@
             .product-info img {
                 width: 100%;
                 margin-bottom: 20px;
-            }
-
-            .product-info .text {
-                width: 100%;
+                max-width: unset; /* Reset max-width for smaller screens */
             }
         }
     </style>
@@ -168,10 +166,10 @@
         <div class="date" id="date">投稿日/2024年6月15日</div>
         <div class="content" id="content">
             <div class="product-info">
-                <img src="https://cdn.discordapp.com/attachments/1227968088922918963/1251557857002782750/hyakumi.webp?ex=666f0395&is=666db215&hm=b05feb8b96ba3e6b35e0ce9a8c06566a9c546051f40bedbaa2e3d1ff6abf8a0a&e.jpg" alt="">
+                <img src="path_to_your_image.jpg" alt="商品画像">
                 <div class="text">
-                    <p>まず一つ目は「百味ビーンズ」です。お値段は○○円です。</p>
-                    <p>商品の特徴や理由などをこちらに記載します。</p>
+                    <p>まず一つ目は「百味ビーンズ」です。お値段は○○円です。ここに商品の特徴や理由などを記載します。</p>
+                    <p>続いて、別の商品や詳細をこちらに記述します。</p>
                 </div>
             </div>
         </div>
