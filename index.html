@@ -3,18 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>背景色変更と画像移動</title>
+    <title>ブログ記事</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
             position: relative;
             overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: #888888;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-top: 20px;
+            line-height: 1.6;
         }
 
         .color-picker {
@@ -22,7 +48,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-image: url('https://cdn.discordapp.com/attachments/1227968088922918963/1242452147723964546/discord-avatar-512-LKD8R.png?ex=666e2ffb&is=666cde7b&hm=63963590e11945ddd35358c087fca9dfb2fee1806a255012086a4a5761c5b7f2&');
+            background-image: url('https://cdn.discordapp.com/attachments/1227968088922918963/1251538859821629460/IMG_7635.jpg?ex=666ef1e4&is=666da064&hm=ad26e1f780e08eb02210611a19899e881b2e5fd8b5ffc59b1b4a2c23af8f816c&');
             background-size: cover;
             background-position: center;
             cursor: pointer;
@@ -36,11 +62,34 @@
             height: 100%;
             cursor: pointer;
         }
+
+        @media (min-width: 600px) {
+            .title {
+                font-size: 2.5em;
+            }
+
+            .date {
+                font-size: 1em;
+            }
+
+            .content {
+                font-size: 1.1em;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="color-picker" id="color-picker-container">
         <input type="color" id="color-picker">
+    </div>
+
+    <div class="container">
+        <div class="title">ブログ記事のタイトル</div>
+        <div class="date">2024年6月15日</div>
+        <div class="content">
+            <p>これはブログ記事の内容です。ここにブログの本文を書きます。</p>
+            <p>追加の段落やコンテンツをここに挿入できます。</p>
+        </div>
     </div>
 
     <script>
