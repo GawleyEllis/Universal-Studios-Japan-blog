@@ -28,13 +28,10 @@
             z-index: 1000;
         }
 
-        .header .menu-icon {
+        .header .menu-icon, .header .home-icon, .header .toggle-picker-icon {
             font-size: 1.5em;
             cursor: pointer;
-        }
-
-        .header .home-icon {
-            font-size: 1.5em;
+            margin-right: 10px;
         }
 
         .menu {
@@ -140,6 +137,7 @@
 <body>
     <div class="header">
         <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
+        <div class="toggle-picker-icon" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
         <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
     </div>
 
@@ -171,6 +169,16 @@
             document.getElementById('date').style.color = this.value;
             document.getElementById('content').style.color = this.value;
         });
+
+        // カラーピッカーの表示・非表示を切り替える関数
+        function toggleColorPicker() {
+            const colorPickerContainer = document.getElementById('color-picker-container');
+            if (colorPickerContainer.style.display === 'none' || colorPickerContainer.style.display === '') {
+                colorPickerContainer.style.display = 'block';
+            } else {
+                colorPickerContainer.style.display = 'none';
+            }
+        }
 
         // カラーピッカーのクリックイベントを設定
         document.querySelector('.color-picker').addEventListener('click', function() {
