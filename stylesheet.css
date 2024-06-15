@@ -1,4 +1,4 @@
-   <style>
+    <style>
         body {
             display: flex;
             justify-content: center;
@@ -9,31 +9,23 @@
             font-family: Arial, sans-serif;
         }
 
-        .container {
-            text-align: center;
-        }
-
         .color-picker {
             display: inline-block;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        .background-image {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
+            background-image: url('https://via.placeholder.com/60');
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            margin-left: 20px;
+            position: relative;
         }
 
         .color-picker input[type="color"] {
             position: absolute;
             opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
         }
     </style>
