@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>背景色と画像を変更する</title>
-   <link rel="stylesheet" href="https://Lateoffset.github.io/2024/stylesheet.css">
- 
+    <title>背景色変更</title>
+
 </head>
 <body>
-    <div class="container">
-        <div class="color-picker">
-            <input type="color" id="color-picker">
-        </div>
-        <div class="background-image" id="bg-image" style="background-image: url('https://cdn.discordapp.com/attachments/1227968088922918963/1242452147723964546/discord-avatar-512-LKD8R.png?ex=666e2ffb&is=666cde7b&hm=63963590e11945ddd35358c087fca9dfb2fee1806a255012086a4a5761c5b7f2&.jpg');" onclick="changeBackgroundImage()"></div>
+    <div class="color-picker">
+        <input type="color" id="color-picker">
     </div>
 
     <script>
@@ -21,13 +17,10 @@
             document.body.style.backgroundColor = this.value;
         });
 
-        // 背景画像を変更する関数
-        function changeBackgroundImage() {
-            var imageUrl = prompt("画像のURLを入力してください:");
-            if (imageUrl) {
-                document.getElementById('bg-image').style.backgroundImage = "url('" + imageUrl + "')";
-            }
-        }
+        // カラーピッカーのクリックイベントを設定
+        document.querySelector('.color-picker').addEventListener('click', function() {
+            document.getElementById('color-picker').click();
+        });
     </script>
 </body>
 </html>
