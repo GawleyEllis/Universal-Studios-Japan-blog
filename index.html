@@ -28,7 +28,7 @@
             z-index: 1000;
         }
 
-        .header .menu-icon, .header .home-icon, .header .toggle-picker-icon, .header .circle-icon {
+        .header .menu-icon, .header .home-icon, .header .toggle-picker-icon {
             font-size: 1.5em;
             cursor: pointer;
             margin-right: 10px;
@@ -108,10 +108,9 @@
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
+            position: absolute;
+            right: 50px; /* Adjust as needed */
+            top: 0; /* Adjust as needed */
         }
 
         .color-picker input[type="color"] {
@@ -119,33 +118,6 @@
             opacity: 0;
             width: 100%;
             height: 100%;
-            cursor: pointer;
-        }
-
-        .gray-section {
-            background-color: #f0f0f0;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .gray-section .section-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333333;
-        }
-
-        .circle-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #333;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
             cursor: pointer;
         }
 
@@ -167,9 +139,11 @@
 <body>
     <div class="header">
         <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
-        <div class="circle-icon" onclick="toggleColorPicker()">○</div> <!-- Circle icon with color picker toggle -->
         <div class="toggle-picker-icon" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
         <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
+        <div class="color-picker" id="color-picker-container">
+            <input type="color" id="color-picker">
+        </div>
     </div>
 
     <div class="menu" id="menu">
@@ -180,10 +154,6 @@
         <a href="#">リンク4</a>
     </div>
 
-    <div class="color-picker" id="color-picker-container">
-        <input type="color" id="color-picker">
-    </div>
-
     <div class="container">
         <div class="title" id="title">ブログ記事のタイトル</div>
         <div class="date" id="date">2024年6月15日</div>
@@ -191,11 +161,6 @@
             <p>これはブログ記事の内容です。ここにブログの本文を書きます。</p>
             <p>追加の段落やコンテンツをここに挿入できます。</p>
         </div>
-    </div>
-
-    <div class="gray-section">
-        <div class="section-title">追加セクション</div>
-        <p>ここに追加のコンテンツや情報を記述します。</p>
     </div>
 
     <script>
@@ -216,56 +181,21 @@
             }
         }
 
-        // ドラッグ＆ドロップの実装
-        const colorPickerContainer = document.getElementById('color-picker-container');
-        let isDragging = false;
-
-        colorPickerContainer.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            let offsetX = e.clientX - colorPickerContainer.getBoundingClientRect().left;
-            let offsetY = e.clientY - colorPickerContainer.getBoundingClientRect().top;
-
-            function moveAt(pageX, pageY) {
-                colorPickerContainer.style.left = pageX - offsetX + 'px';
-                colorPickerContainer.style.top = pageY - offsetY + 'px';
-            }
-
-            function onMouseMove(event) {
-                moveAt(event.pageX, event.pageY);
-            }
-
-            document.addEventListener('mousemove', onMouseMove);
-
-            colorPickerContainer.addEventListener('mouseup', function() {
-                isDragging = false;
-                document.removeEventListener('mousemove', onMouseMove);
-            });
-
-            colorPickerContainer.addEventListener('mouseleave', function() {
-                if (isDragging) {
-                    document.removeEventListener('mousemove', onMouseMove);
-                }
-            });
+        // カラーピッカーのクリックイベントを設定
+        document.querySelector('.color-picker').addEventListener('click', function() {
+            document.getElementById('color-picker').click();
         });
 
-        // スマートフォン向けタッチ操作の実装
-        colorPickerContainer.addEventListener('touchstart', function(e) {
-            isDragging = true;
-            let touch = e.touches[0];
-            let offsetX = touch.clientX - colorPickerContainer.getBoundingClientRect().left;
-            let offsetY = touch.clientY - colorPickerContainer.getBoundingClientRect().top;
+        // メニューを開く関数
+        function openMenu() {
+            document.getElementById('menu').style.width = '250px';
+        }
 
-            function moveAt(pageX, pageY) {
-                colorPickerContainer.style.left = pageX - offsetX + 'px';
-                colorPickerContainer.style.top = pageY - offsetY + 'px';
-            }
-
-            function onTouchMove(event) {
-                let touch = event.touches[0];
-                moveAt(touch.pageX, touch.pageY);
-            }
-
-            document.addEventListener('touchmove', onTouchMove);
-
-            colorPickerContainer.addEventListener('touchend', function() {
+        // メニューを閉じる関数
+        function closeMenu() {
+            document.getElementById('menu').style.width = '0';
+        }
+    </script>
+</body>
+</html>
 
