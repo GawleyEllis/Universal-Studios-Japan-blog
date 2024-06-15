@@ -115,7 +115,7 @@
         .product-info {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; /* Align items to the top */
+            align-items: stretch; /* Align items to stretch vertically */
             margin-top: 20px;
         }
 
@@ -129,6 +129,9 @@
 
         .product-info .text {
             flex: 1; /* Take remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center text vertically */
         }
 
         @media (max-width: 600px) {
@@ -192,3 +195,4 @@
     </script>
 </body>
 </html>
+
