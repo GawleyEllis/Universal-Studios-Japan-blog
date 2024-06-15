@@ -14,10 +14,67 @@
             overflow: hidden;
         }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header .menu-icon {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .header .home-icon {
+            font-size: 1.5em;
+        }
+
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+
+        .menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
         .container {
             width: 90%;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 80px auto 20px auto; /* Adjust margin to account for fixed header */
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,6 +86,7 @@
             font-weight: bold;
             margin-bottom: 10px;
             text-align: center;
+            color: #000000;
         }
 
         .date {
@@ -41,6 +99,7 @@
         .content {
             margin-top: 20px;
             line-height: 1.6;
+            color: #000000;
         }
 
         .color-picker {
@@ -48,7 +107,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-image: url('https://cdn.discordapp.com/attachments/1227968088922918963/1251538859821629460/IMG_7635.jpg?ex=666ef1e4&is=666da064&hm=ad26e1f780e08eb02210611a19899e881b2e5fd8b5ffc59b1b4a2c23af8f816c&');
+            background-image: url('https://via.placeholder.com/60');
             background-size: cover;
             background-position: center;
             cursor: pointer;
@@ -79,23 +138,38 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
+        <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
+    </div>
+
+    <div class="menu" id="menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
+        <a href="#">リンク1</a>
+        <a href="#">リンク2</a>
+        <a href="#">リンク3</a>
+        <a href="#">リンク4</a>
+    </div>
+
     <div class="color-picker" id="color-picker-container">
         <input type="color" id="color-picker">
     </div>
 
     <div class="container">
-        <div class="title">ブログ記事のタイトル</div>
-        <div class="date">2024年6月15日</div>
-        <div class="content">
+        <div class="title" id="title">ブログ記事のタイトル</div>
+        <div class="date" id="date">2024年6月15日</div>
+        <div class="content" id="content">
             <p>これはブログ記事の内容です。ここにブログの本文を書きます。</p>
             <p>追加の段落やコンテンツをここに挿入できます。</p>
         </div>
     </div>
 
     <script>
-        // 背景色を変更する関数
+        // 文字色を変更する関数
         document.getElementById('color-picker').addEventListener('input', function() {
-            document.body.style.backgroundColor = this.value;
+            document.getElementById('title').style.color = this.value;
+            document.getElementById('date').style.color = this.value;
+            document.getElementById('content').style.color = this.value;
         });
 
         // カラーピッカーのクリックイベントを設定
@@ -165,8 +239,16 @@
                 }
             });
         });
+
+        // メニューを開く関数
+        function openMenu() {
+            document.getElementById('menu').style.width = '250px';
+        }
+
+        // メニューを閉じる関数
+        function closeMenu() {
+            document.getElementById('menu').style.width = '0';
+        }
     </script>
 </body>
 </html>
-
-
