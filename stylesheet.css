@@ -1,0 +1,39 @@
+   <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .color-picker {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .background-image {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .color-picker input[type="color"] {
+            position: absolute;
+            opacity: 0;
+        }
+    </style>
