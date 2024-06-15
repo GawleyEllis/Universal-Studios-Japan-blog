@@ -4,7 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>背景色変更</title>
-   <link rel="stylesheet" href="https://Lateoffset.github.io/2024/stylesheet.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .color-picker {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-image: url('https://cdn.discordapp.com/attachments/1227968088922918963/1242452147723964546/discord-avatar-512-LKD8R.png?ex=666e2ffb&is=666cde7b&hm=63963590e11945ddd35358c087fca9dfb2fee1806a255012086a4a5761c5b7f2&');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .color-picker input[type="color"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="color-picker">
@@ -24,3 +54,4 @@
     </script>
 </body>
 </html>
+
