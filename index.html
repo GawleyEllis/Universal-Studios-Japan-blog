@@ -109,8 +109,13 @@
             background-position: center;
             cursor: pointer;
             position: absolute;
-            right: 50px; /* Adjust as needed */
-            top: 0; /* Adjust as needed */
+            top: calc(50% - 30px); /* Center vertically */
+            right: 10px; /* Adjust as needed */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .color-picker:hover {
+            transform: scale(1.1); /* Scale up on hover */
         }
 
         .color-picker input[type="color"] {
@@ -139,11 +144,11 @@
 <body>
     <div class="header">
         <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
-        <div class="toggle-picker-icon" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
-        <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
-        <div class="color-picker" id="color-picker-container">
+        <div class="color-picker" id="color-picker-container" onmousedown="startDrag(event)" ontouchstart="startDrag(event)">
             <input type="color" id="color-picker">
         </div>
+        <div class="toggle-picker-icon" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
+        <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
     </div>
 
     <div class="menu" id="menu">
@@ -181,10 +186,49 @@
             }
         }
 
-        // カラーピッカーのクリックイベントを設定
-        document.querySelector('.color-picker').addEventListener('click', function() {
-            document.getElementById('color-picker').click();
-        });
+        // ドラッグ＆ドロップの実装
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        function startDrag(e) {
+            e.preventDefault();
+            isDragging = true;
+
+            if (e.type === 'mousedown') {
+                offsetX = e.clientX - e.target.getBoundingClientRect().left;
+                offsetY = e.clientY - e.target.getBoundingClientRect().top;
+            } else if (e.type === 'touchstart') {
+                offsetX = e.touches[0].clientX - e.target.getBoundingClientRect().left;
+                offsetY = e.touches[0].clientY - e.target.getBoundingClientRect().top;
+            }
+
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('touchmove', onDrag);
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+        }
+
+        function onDrag(e) {
+            if (isDragging) {
+                let x = e.clientX - offsetX;
+                let y = e.clientY - offsetY;
+                moveColorPicker(x, y);
+            }
+        }
+
+        function moveColorPicker(x, y) {
+            let colorPickerContainer = document.getElementById('color-picker-container');
+            colorPickerContainer.style.left = x + 'px';
+            colorPickerContainer.style.top = y + 'px';
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('touchmove', onDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchend', stopDrag);
+        }
 
         // メニューを開く関数
         function openMenu() {
@@ -198,4 +242,3 @@
     </script>
 </body>
 </html>
-
