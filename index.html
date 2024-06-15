@@ -167,7 +167,7 @@
 <body>
     <div class="header">
         <div class="home-icon" onclick="location.href='/'">&#x2302;</div> <!-- Home icon -->
-        <div class="circle-icon" onclick="openCircle()">○</div> <!-- Circle icon -->
+        <div class="circle-icon" onclick="toggleColorPicker()">○</div> <!-- Circle icon with color picker toggle -->
         <div class="toggle-picker-icon" onclick="toggleColorPicker()">&#9679;</div> <!-- Toggle color picker icon -->
         <div class="menu-icon" onclick="openMenu()">&#9776;</div> <!-- Hamburger menu icon -->
     </div>
@@ -216,11 +216,6 @@
             }
         }
 
-        // カラーピッカーのクリックイベントを設定
-        document.querySelector('.color-picker').addEventListener('click', function() {
-            document.getElementById('color-picker').click();
-        });
-
         // ドラッグ＆ドロップの実装
         const colorPickerContainer = document.getElementById('color-picker-container');
         let isDragging = false;
@@ -266,5 +261,11 @@
             }
 
             function onTouchMove(event) {
-                let touch = event
+                let touch = event.touches[0];
+                moveAt(touch.pageX, touch.pageY);
+            }
+
+            document.addEventListener('touchmove', onTouchMove);
+
+            colorPickerContainer.addEventListener('touchend', function() {
 
