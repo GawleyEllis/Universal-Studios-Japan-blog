@@ -3,121 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[お土産編]ユニバーサル・スタジオ・ジャパンに行くなら○○を買え！</title>
-    <link rel="stylesheet" href="https://GawleyEllis.github.io/Universal-Studios-Japan-blog/stylesheet.css">
- 
+    <title>ユニバーサル・スタジオ・ジャパンのお土産</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header .menu-icon, .header .home-icon {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #f1f1f1;
+        }
+
+        .menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 80px auto 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .intro {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #000000;
+            width: 100%;
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: #888888;
+            text-align: right;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .content {
+            margin-top: 20px;
+            line-height: 1.6;
+            color: #000000;
+            width: 100%;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .product-info img {
+            width: 40%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+
+        .product-info .text {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .product-info {
+                flex-direction: column;
+            }
+
+            .product-info img {
+                width: 100%;
+                margin-bottom: 20px;
+                max-width: unset;
+            }
+        }
+
+        .highlight {
+            text-decoration: underline;
+            text-decoration-color: yellow;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
-        <div class="home-icon" onclick="location.href='/'"><i class="fas fa-home"></i></div>
-        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="home-icon" onclick="location.href='/'">&#x2302;</div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     </div>
 
     <div class="menu" id="menu">
-        <a href="#" class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></a>
-        <a href="#"><i class="fas fa-link"></i> リンク1</a>
-        <a href="#"><i class="fas fa-link"></i> リンク2</a>
-        <a href="#"><i class="fas fa-link"></i> リンク3</a>
-        <a href="#"><i class="fas fa-link"></i> リンク4</a>
+        <a href="#" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <a href="#">リンク1</a>
+        <a href="#">リンク2</a>
+        <a href="#">リンク3</a>
+        <a href="#">リンク4</a>
+        <a href="#">リンク5</a>
+        <a href="#">お問い合わせ</a>
     </div>
 
     <div class="container">
-        <div class="intro"></div>
+        <div class="intro">
+            <p>どうも五十嵐琉偉です。今回はみなさんにUniversal Studios Japanで買ったほうがいいおすすめ商品をお届けしていきます。良かったら最後までご覧ください！</p>
+        </div>
         <div class="title" id="title">Universal Studios Japanで買ったほうがいい商品</div>
         <div class="date" id="date">投稿日/2024年6月15日</div>
         <div class="content" id="content">
-            <p>どうも五十嵐琉偉です。今回はみなさんにUniversal Studios Japanで買ったほうがいいおすすめ商品をお届けしていきます。良かったら最後までご覧ください！</p>
-
             <div class="product-info">
-                <img src="https://cdn.discordapp.com/attachments/1227968088922918963/1251557857002782750/hyakumi.webp?ex=666f0395&is=666db215&hm=b05feb8b96ba3e6b35e0ce9a8c06566a9c546051f40bedbaa2e3d1ff6abf8a0a&.jpg" alt="">
+                <img src="https://cdn.discordapp.com/attachments/1227968088922918963/1251557857002782750/hyakumi.webp" alt="">
                 <div class="text">
-                    <p>まず一つ目は「百味ビーンズ」です。お値段は<span class="highlight">¥2,100(税込)</span>だけです。味の感想ですが、これはあくまで個人の感想ですが、単刀直入に言うと…基本的に美味しくないと感じました😅名前からしてヤバい味は、しっかりまずかったですしフルーツ系の味に関しても、甘くて美味しいのは美味しいですが、一度食べれば十分かなというレベルです。しかし、味の再現度はどれも高く、エンタメ性抜群のお菓子でした！</p>
-                    <p>百味ビーンズには耳あか味、せっけん味などを含む20種類のフレーバーがランダムに入っています。食べ飽きくていいと思います。</p>
+                    <p>まず一つ目は「百味ビーンズ」です。お値段は<span class="highlight">¥2,100(税込)</span>だけです。味の感想ですが、これはあくまで個人の感想ですが、単刀直入に言うと…基本的に美味しくないと感じました
+                        😅名前からしてヤバい味は、しっかりまずかったですしフルーツ系の味に関しても、甘くて美味しいのは美味しいですが、一度食べれば十分かなというレベルです。しかし、味の再現度はどれも高く、
+エンタメ性抜群のお菓子でした！</p>
+                    <p>百味ビーンズには耳あか味、せっけん味などを含む20種類（耳あか味、ミミズ味、土味、シナモン味、チェリー味、綿菓子味、鼻くそ味、ブルーベリー味、黒コショウ味、バナナ味、草味、青りんご味、マシュマロ味、腐った卵味、ソーセージ味、レモン味、せっけん味、砂糖漬け果物味、ゲロ味、スイカ味）のフレーバーがランダムに入っています。
+食べ飽きくていいと思います。</p>
                 </div>
             </div>
-
+            <!-- 商品の追加例 -->
             <div class="product-info">
-                <img src="https://example.com/image2.jpg" alt="">
+                <img src="your-image-url" alt="商品2">
                 <div class="text">
-                    <p>2つ目の商品は「ミニオンポップコーンバケット」です。価格は<span class="highlight">¥3,500(税込)</span>です。可愛らしいミニオンのデザインが特徴で、ポップコーンを楽しんだ後もお土産として持ち帰ることができます。パーク内での持ち運びにも便利ですし、記念にもなるのでおすすめです。</p>
+                    <p>商品2の説明です。お値段は<span class="highlight">¥XXXX(税込)</span>です。商品についての詳細な説明をここに記載します。</p>
                 </div>
             </div>
-
+            <!-- さらに商品を追加 -->
             <div class="product-info">
-                <img src="https://example.com/image3.jpg" alt="">
+                <img src="your-image-url" alt="商品3">
                 <div class="text">
-                    <p>3つ目の商品は「ユニコーンぬいぐるみ」です。価格は<span class="highlight">¥4,200(税込)</span>です。フワフワでカラフルなユニコーンのぬいぐるみは、お子様だけでなく大人にも人気の商品です。パークでの思い出をお家に持ち帰ることができます。</p>
+                    <p>商品3の説明です。お値段は<span class="highlight">¥XXXX(税込)</span>です。商品についての詳細な説明をここに記載します。</p>
                 </div>
             </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image4.jpg" alt="">
-                <div class="text">
-                    <p>4つ目の商品は「ハリーポッターの杖」です。価格は<span class="highlight">¥4,800(税込)</span>です。ハリーポッターシリーズの中でも特に人気のある商品で、自分だけの魔法の杖を選ぶことができます。魔法使いの気分を味わえるアイテムです。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image5.jpg" alt="">
-                <div class="text">
-                    <p>5つ目の商品は「スヌーピーのTシャツ」です。価格は<span class="highlight">¥2,800(税込)</span>です。パーク限定デザインのTシャツは、スヌーピーファン必見のアイテムです。シンプルで着心地の良い素材なので、普段使いにも最適です。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image6.jpg" alt="">
-                <div class="text">
-                    <p>6つ目の商品は「ミニオンのキャップ」です。価格は<span class="highlight">¥2,500(税込)</span>です。かわいいミニオンのデザインが施されたキャップは、パークでの紫外線対策にも役立ちます。子供から大人まで幅広い世代に人気があります。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image7.jpg" alt="">
-                <div class="text">
-                    <p>7つ目の商品は「スパイダーマンのマグカップ」です。価格は<span class="highlight">¥1,800(税込)</span>です。スパイダーマンファンにはたまらないデザインのマグカップで、朝のコーヒータイムが楽しくなります。丈夫な作りで、長く使えます。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image8.jpg" alt="">
-                <div class="text">
-                    <p>8つ目の商品は「ユニバーサル・スタジオ・ジャパン限定のトートバッグ」です。価格は<span class="highlight">¥3,200(税込)</span>です。シンプルなデザインでありながら、パークのロゴが入っているので、使うたびにパークの思い出がよみがえります。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image9.jpg" alt="">
-                <div class="text">
-                    <p>9つ目の商品は「ジュラシック・パークのフィギュア」です。価格は<span class="highlight">¥5,000(税込)</span>です。映画のワンシーンを再現したリアルなフィギュアで、コレクターにもおすすめです。ディテールにこだわった作りが魅力です。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image10.jpg" alt="">
-                <div class="text">
-                    <p>10つ目の商品は「セサミストリートのパズル」です。価格は<span class="highlight">¥2,200(税込)</span>です。カラフルでかわいいセサミストリートのキャラクターがデザインされたパズルは、お子様へのお土産に最適です。完成後はインテリアとしても楽しめます。</p>
-                </div>
-            </div>
-
-            <div class="product-info">
-                <img src="https://example.com/image11.jpg" alt="">
-                <div class="text">
-                    <p>11つ目の商品は「ミニオンのぬいぐるみキーホルダー」です。価格は<span class="highlight">¥1,200(税込)</span>です。カバンや鍵につけて、いつでもミニオンと一緒にいられるアイテムです。お土産にもぴったりです。</p>
-                </div>
-            </div>
+            <!-- 必要に応じてさらに商品を追加してください -->
         </div>
     </div>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById("menu");
-            if (menu.style.width === "0px" || menu.style.width === "") {
-                menu.style.width = "250px";
-            } else {
-                menu.style.width = "0px";
-            }
+            const menu = document.getElementById('menu');
+            menu.style.width = menu.style.width === '250px' ? '0' : '250px';
         }
     </script>
 </body>
 </html>
-
